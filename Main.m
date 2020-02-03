@@ -6,12 +6,16 @@ Preamble;
 %% Input variables
 x1 = 0;
 xn = 1;
-n = 5;
+n = 8;
+D = 1;
+lambda = 1;
 
 %% Handle input
 GenerateMesh;
 GenerateTopology;
-% AssembleMatrix;
+GenerateElementMatrix1D;
+AssembleMatrix;
 
 disp(x);
 disp(elmat);
+disp(S);
