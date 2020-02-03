@@ -6,8 +6,9 @@ xn = 1;
 n = 5;
 
 %% Handle input
-x = GenerateMesh(x1,xn,n);
-elmat = GenerateTopology(n);
+GenerateMesh;
+GenerateTopology;
+AssembleMatrix;
 
 disp(x);
 disp(elmat);
