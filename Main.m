@@ -6,10 +6,10 @@ Preamble;
 %% Input variables
 x1 = 0;
 xn = 1;
-n = 100;
 D = 1;
 lambda = 1;
-
+n_vec = [10,20,40,80,160];
+for n = n_vec
 %% Handle input
 GenerateMesh;
 GenerateTopology;
@@ -18,17 +18,14 @@ AssembleMatrix;
 GenerateElementVector1d;
 AssembleVector;
 
-% disp(x);
-% disp(elmat);
-% disp(S);
-% disp(f);
-
 u = S\f;
 
 figure(1);
-plot(x,u); hold on
-ylim([0,1.2])
+plot(x,u); hold on;
+% ylim([0,1.2])
+end
 title('Solution with neuman boundaries');
 grid minor
 xlabel('$x$');
 ylabel('$u(x)$');
+legend({'n = 10', 'n = 20','n = 40','n = 80','n = 160',},'Interpreter','Latex')
