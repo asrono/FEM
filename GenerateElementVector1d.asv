@@ -1,7 +1,0 @@
-%% GenerateElementVector1d.m
-% This routine will create the element matrix
-
-%% Implementation
-f_elem(:,1) = h/2*[sin(20*x)]
-
-f_elem = h/2*[1, 1]';

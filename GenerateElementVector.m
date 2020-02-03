@@ -1,13 +1,7 @@
+%% GenerateElementVector.m
+% This routine will create the element matrix
 
-% Module for element mass matrix for reactive term
-%
-% Output: felem  ====== vector of two components
-%
-% felem(1), felem(2) to be computed in this routine.
-
-clear felem
-
-for index1 = 1:topology
-	    global_index = elmat(i,index1);
-		felem(index1) = abs(Delta)/6*1;
-end;
+%% Implementation
+f_elem = zeros(n-1,2);
+f_elem(:,1) = h/2*fun(x(elmat(:,1)));
+f_elem(:,2) = h/2*fun(x(elmat(:,2)));

@@ -32,9 +32,9 @@ for n = n_vec
 %% Run main program
 GenerateMesh;
 GenerateTopology;
-GenerateElementMatrix1D;
+GenerateElementMatrix;
 AssembleMatrix;
-GenerateElementVector1d;
+GenerateElementVector;
 AssembleVector;
 u = S\f;
 
