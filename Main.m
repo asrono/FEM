@@ -57,7 +57,7 @@ end
 %% Plotting
 figure(1);
 hold off;
-title('Solution with neuman boundaries');
+title('Solution with Neumann boundaries');
 grid minor
 ylim([0,0.05]);
 xlabel('$x$');
@@ -102,7 +102,7 @@ legend({'Data points','Linear fit'},'Interpreter','Latex','Location','Northwest'
 
 figure(4); movegui('northwest');
 plot(x,fun_exact(x),'-k');
-title('Exact solution with neuman boundaries');
+title('Exact solution with Neumann boundaries');
 grid minor
 xlabel('$x$');
 ylabel('$u(x)$');
