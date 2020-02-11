@@ -7,21 +7,25 @@
 
 clear felem
 
-for i = 1:6
-    xp = x_vec_well(i,1);
-    yp = x_vec_well(i,2);
+cond = false;
+for j = 1:6
+    xp = x_vec_well(1,j);
+    yp = x_vec_well(2,j);
 %     Delta = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
-    Delta1 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
-    Delta2 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
-    Delta3 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
-    if abs(abs(Delta)-abs(Delta_check)) <= 100*eps
-        cond = 
+    Delta1 = det([1 xp yp;1 xc(2) yc(2);1 xc(3) yc(3)]);
+    Delta2 = det([1 xc(1) yc(1);1 xp yp;1 xc(3) yc(3)]);
+    Delta3 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xp yp]);
+    Delta_check = abs(Delta1)+abs(Delta2)+abs(Delta3);
+    check(j) = abs(abs(Delta)-abs(Delta_check));
+    if check <= 100*eps
+        cond = true;
+        break;
     end
 end
 
+
 for index1 = 1:topology
-	    global_index = elmat(i,index1);
-        disp(global_index)
+% 	    global_index = elmat(i,index1);
 		felem(index1) = 0;
         if cond
             felem(index1) = Qp;

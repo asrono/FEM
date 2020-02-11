@@ -19,31 +19,32 @@ x_vec_well = [0.6*cos(2/5*pi*((1:5)-1)),0;
 
 %% Run main program
 AP3001Mesh;
-Selem_vec = zeros(n,3,3);
-felem_vec = zeros(n,3);
-for i = 1:n
-    GenerateElementMatrix2;
-    Selem_vec(i,:,:) = Selem;
-
-    GenerateElementVector2
-    check_vec(i,:) = check;
-
-    felem_vec(i,:) = felem;
-end
-n_bnd = size(elmatbnd,1);
-
-BMelem_vec = zeros(n_bnd,2,2);
-bfelem_vec = zeros(n_bnd,2);
-
-for i = 1:n_bnd
-    GenerateBoundaryElementMatrix;
-    BMelem_vec(i,:,:) = BMelem;
-    
-    GenerateBoundaryElementVector;
-    bfelem_vec(i,:) = bfelem;
-end
-% AP3001Comp;
-% AP3001Post;
+% Selem_vec = zeros(n,3,3);
+% felem_vec = zeros(n,3);
+% for i = 1:n
+%     GenerateElementMatrix2;
+%     Selem_vec(i,:,:) = Selem;
+% 
+%     GenerateElementVector2
+%     check_vec(i,:) = check;
+% 
+%     felem_vec(i,:) = felem;
+% end
+% n_bnd = size(elmatbnd,1);
+% 
+% BMelem_vec = zeros(n_bnd,2,2);
+% bfelem_vec = zeros(n_bnd,2);
+% 
+% for i = 1:n_bnd
+%     GenerateBoundaryElementMatrix;
+%     BMelem_vec(i,:,:) = BMelem;
+%     
+%     GenerateBoundaryElementVector;
+%     bfelem_vec(i,:) = bfelem;
+% end
+BuildMatricesandVectors;
+AP3001Comp;
+AP3001Post;
 % AssembleVector;
 % u = S\f;
 

@@ -18,13 +18,13 @@ f 		= zeros(n,1); % right-hand side vector
 %
 
 for i = 1:length(elmat(:,1)) % for all internal elements
-	GenerateElementMatrix; % Selem	
+	GenerateElementMatrix2; % Selem	
     for ind1 = 1:topology
         for ind2 = 1:topology
             S(elmat(i,ind1),elmat(i,ind2))	= S(elmat(i,ind1),elmat(i,ind2)) + Selem(ind1,ind2);
         end;
     end;
-	GenerateElementVector; % felem
+	GenerateElementVector2; % felem
     for ind1 = 1:topology
         f(elmat(i,ind1)) = f(elmat(i,ind1)) + felem(ind1);
     end;
