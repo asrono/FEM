@@ -1,0 +1,29 @@
+
+% Module for element mass matrix for reactive term
+%
+% Output: felem  ====== vector of two components
+%
+% felem(1), felem(2) to be computed in this routine.
+
+clear felem
+
+for i = 1:6
+    xp = x_vec_well(i,1);
+    yp = x_vec_well(i,2);
+%     Delta = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
+    Delta1 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
+    Delta2 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
+    Delta3 = det([1 xc(1) yc(1);1 xc(2) yc(2);1 xc(3) yc(3)]);
+    if abs(abs(Delta)-abs(Delta_check)) <= 100*eps
+        cond = 
+    end
+end
+
+for index1 = 1:topology
+	    global_index = elmat(i,index1);
+        disp(global_index)
+		felem(index1) = 0;
+        if cond
+            felem(index1) = Qp;
+        end
+end;

@@ -2,7 +2,6 @@
 % This file will assemble an FEM problem and compute the solution
 
 Preamble;
-opt = 2; % if 1, do f(x)=1, if 2, do f(x)=sin(20x)
 
 %% Input variables
 Qp  = 50;       % [m^2/s]
@@ -19,14 +18,34 @@ x_vec_well = [0.6*cos(2/5*pi*((1:5)-1)),0;
               0.6*sin(2/5*pi*((1:5)-1)),0];
 
 %% Run main program
-% GenerateMesh;
-% GenerateTopology;
-% GenerateElementMatrix;
-% AssembleMatrix;
-% GenerateElementVector;
+AP3001Mesh;
+Selem_vec = zeros(n,3,3);
+felem_vec = zeros(n,3);
+for i = 1:n
+    GenerateElementMatrix2;
+    Selem_vec(i,:,:) = Selem;
+    
+    GenerateElementVector2
+    felem_vec(i,:) = felem;
+end
+n_bnd = size(elmatbnd,1);
+
+Sbnd_vec = zeros(n_bnd,3,3);
+fbnd_vec = zeros(n_bnd,2);
+
+for i = 1:n_bnd
+    GenerateBoundaryElementMatrix;
+% GenerateBoundaryElementVector;
+end
+% AP3001Comp;
+% AP3001Post;
 % AssembleVector;
 % u = S\f;
 
 %% 
-figure(1);
-plot(x_vec_well[1,],'ok');
+figure(5);
+plot(x_vec_well(1,:),x_vec_well(2,:),'ok');
+xlim(x_domain)
+ylim(y_domain)
+grid minor
+title('Domain with sources')
