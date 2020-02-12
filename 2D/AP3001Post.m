@@ -18,7 +18,12 @@ view(2); shading interp; colormap jet; set(gcf,'renderer','zbuffer')
 title('Contour plot')
 
 figure(3); movegui('east')
-quiver(x,y,v_x',v_y',1.7,'Color',[0,0,0]); axis([-1 1 -1 1]); hold on
+if normalise_quivers
+   norm = sqrt(v_x.^2+v_y.^2);
+   v_x = v_x./norm;
+   v_y = v_y./norm;
+end
+quiver(x,y,v_x',v_y',quiverscale,'Color',[0,0,0]); axis([-1 1 -1 1]); hold on
 xlabel('$x [m]$')
 ylabel('$y [m]$')
 grid minor
