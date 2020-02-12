@@ -1,13 +1,25 @@
+% clear all
+
 Geometry = 'squareg'; 
+
 DiffCoeff = k/mu;
 
 h_transfer = 1;
+
+u_inf = 1;
+
+
+% Geometry = 'squareg'; % gives square [-1,1] x [-1,1]
+
+% Geometry = 'circleg'; % gives unit circle centered at origin
+
+% Geometry = 'lshapeg'; % gives L-shape
+
 [p,e,t] = initmesh(Geometry);
 
 ind_ref = number_of_refinements;
 while ind_ref > 0
     [p,e,t] = refinemesh(Geometry,p,e,t); % gives gridrefinement
-    ind_ref = ind_ref - 1;
 end
 
 x = p(1,:); y = p(2,:);
