@@ -28,3 +28,10 @@ xlabel('$x [m]$')
 ylabel('$y [m]$')
 grid minor
 title('Velocity plot')
+
+figure(4);movegui('north')
+plot(x_vec_well(1,:),x_vec_well(2,:),'ok');
+xlim(x_domain)
+ylim(y_domain)
+grid minor
+title('Domain with sources')
