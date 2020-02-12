@@ -19,9 +19,11 @@ for j = 1:6
     check(j) = abs(abs(Delta)-abs(Delta_check));
     if check(j) <= 100*eps
         cond = true;
-%         if j == 6
-%            cond2 = true; 
-%         end
+        if comp
+            if j == 6 || j==1 || j == 2
+               cond2 = true; 
+            end
+        end
         break;
     end
 end
@@ -30,9 +32,10 @@ end
 for index1 = 1:topology
 		felem(index1) = 0;
         if cond
-            felem(index1) = Qp;
+            phi_xp = alpha(index1)+beta(index1)*xp+gamma(index1)*yp;
+            felem(index1) = -Qp*phi_xp;
         end
         if cond2
-           felem(index1) = -Qp; 
+           felem(index1) = Qp*phi_xp; 
         end
 end;

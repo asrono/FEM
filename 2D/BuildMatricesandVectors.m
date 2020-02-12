@@ -10,6 +10,9 @@
 % First Initialisation of large discretisation matrix, right-hand side vector
 
 S 		= sparse(n,n); % stiffness matrix
+M 		= sparse(n,n); % stiffness matrix
+C_x     = sparse(n,n); % stiffness matrix
+C_y 	= sparse(n,n); % stiffness matrix
 
 f 		= zeros(n,1); % right-hand side vector
 
@@ -22,6 +25,9 @@ for i = 1:length(elmat(:,1)) % for all internal elements
     for ind1 = 1:topology
         for ind2 = 1:topology
             S(elmat(i,ind1),elmat(i,ind2))	= S(elmat(i,ind1),elmat(i,ind2)) + Selem(ind1,ind2);
+            M(elmat(i,ind1),elmat(i,ind2))	= M(elmat(i,ind1),elmat(i,ind2)) + Melem(ind1,ind2);
+            C_x(elmat(i,ind1),elmat(i,ind2))	= C_x(elmat(i,ind1),elmat(i,ind2)) + C_xelem(ind1,ind2);
+            C_y(elmat(i,ind1),elmat(i,ind2))	= C_y(elmat(i,ind1),elmat(i,ind2)) + C_yelem(ind1,ind2);
         end;
     end;
 	GenerateElementVector2; % felem

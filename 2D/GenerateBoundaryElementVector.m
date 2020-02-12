@@ -10,5 +10,5 @@ end;
 lek = sqrt((xc(2)-xc(1))^2+(yc(2)-yc(1))^2);
 
 for index1 = 1:topologybnd
-		bfelem(index1) = -K*ph*lek/2;
+		bfelem(index1) = K*ph*lek/2;
 end;
