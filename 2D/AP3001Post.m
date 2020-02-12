@@ -1,15 +1,25 @@
-figure(2);
+figure(1); movegui('west')
 trisurf(elmat,x,y,u)
-figure(3);
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+zlabel('$p [Pa]$')
+title('Surface plot')
+
+figure(2) ;movegui('center')
 trisurf(elmat,x,y,u);
-view(2); shading interp; colormap jet; colorbar; set(gcf,'renderer','zbuffer')
-
-figure(4);
-
-norm = sqrt(v_x.^2+v_y.^2);
-% v_x=v_x/norm;
-% v_y=v_y/norm;
-quiver(x,y,v_x',v_y',2); axis([-1 1 -1 1]); hold on
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+c = colorbar;
+c.Label.String = '$p[Pa]$';
+c.Label.Interpreter = 'latex';
+c.TickLabelInterpreter = 'latex';
 grid minor
+view(2); shading interp; colormap jet; set(gcf,'renderer','zbuffer')
+title('Contour plot')
 
-% contour(elmat,x,y,u);hold off;
+figure(3); movegui('east')
+quiver(x,y,v_x',v_y',1.7,'Color',[0,0,0]); axis([-1 1 -1 1]); hold on
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+grid minor
+title('Velocity plot')

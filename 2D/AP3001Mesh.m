@@ -17,14 +17,14 @@ u_inf = 1;
 
 [p,e,t] = initmesh(Geometry);
 
-[p,e,t] = refinemesh(Geometry,p,e,t); % gives gridrefinement
+% [p,e,t] = refinemesh(Geometry,p,e,t); % gives gridrefinement
 
 % [p,e,t] = refinemesh(Geometry,p,e,t); % gives second gridrefinement
 
 % [p,e,t] = refinemesh(Geometry,p,e,t); % gives third gridrefinement
 
-figure(1)
-pdemesh(p,e,t); % plots the geometry and mesh
+% figure(1)
+% pdemesh(p,e,t); % plots the geometry and mesh
 
 x = p(1,:); y = p(2,:);
 

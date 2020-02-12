@@ -1,13 +1,23 @@
 figure(2);
 trisurf(elmat,x,y,u)
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+zlabel('$p [Pa]$')
+
 figure(3);
 trisurf(elmat,x,y,u);
-view(2); shading interp; colormap jet; colorbar; set(gcf,'renderer','zbuffer')
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+c = colorbar;
+c.Label.String = '$p[Pa]$';
+c.Label.Interpreter = 'latex';
+c.TickLabelInterpreter = 'latex';
+grid minor
+view(2); shading interp; colormap jet; set(gcf,'renderer','zbuffer')
 
 figure(4);
-
-norm = /sqrt(v_x.^2+v_y.^2);
-vx=v_x./sqrt(v_x.^2+v_y.^2);
-vy=v_y./sqrt(v_x.^2+v_y.^2);
-quiver(x,y,vx',vy',0.3); axis([-1 1 -1 1]); hold on
-% contour(elmat,x,y,u);hold off;
+quiver(x,y,v_x',v_y',1.7,'Color',[0,0,0]); axis([-1 1 -1 1]); hold on
+xlabel('$x [m]$')
+ylabel('$y [m]$')
+grid minor
+title('Velocity ')
