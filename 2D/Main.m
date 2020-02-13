@@ -20,8 +20,9 @@ x_vec_well = [0.6*cos(2/5*pi*((1:5)-1)),0;
 comp = false; % if true, one can set K to 0
 
 % Play with the scale of the quivers
-quiverscale = 0.8;
-normalise_quivers = true;
+quiverscale = 2;
+normalise_quivers = false;
+
 %% Run main program
 AP3001Mesh;
 AP3001Comp;
